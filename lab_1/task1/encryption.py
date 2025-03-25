@@ -15,5 +15,10 @@ def encryption(original_data:str, key:str)->str:
 
             else:
                 data_in_matrix[x].append('_')
-
-    code = list(int(x) for x in key)
+    code = tuple(int(x) for x in key.split())
+    encrypted_data = ''
+    for x in range(height):
+        for y in code:
+            if not data_in_matrix[x][y] == '_':
+                encrypted_data+= data_in_matrix[x][y]
+    return encrypted_data
