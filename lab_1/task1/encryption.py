@@ -1,8 +1,31 @@
 from math import ceil
 
 
+def path_generation(columns: int, key: str) -> tuple:
+    code = []
+    start = 0
+    n = len(key)
+    while start < n:
+        end = start
+        while end < n and int(key[start:end + 1]) < columns:
+            end += 1
+        if end == start:
+            start += 1
+            continue
+        num = int(key[start:end])
+        code.append(num)
+        start = end
+
+    return tuple(code)
+
+
 def encryption(original_data:str, key:str)->str:
     data = original_data.replace(" ","")
+    data = data.replace("!","")
+    data = data.replace("?","")
+    data = data.replace("-","")
+    data = data.replace(".","")
+
     height = round(len(data)**0.5)
     width = ceil(len(data)/height)
     data_in_matrix = []
@@ -15,7 +38,10 @@ def encryption(original_data:str, key:str)->str:
 
             else:
                 data_in_matrix[x].append('_')
-    code = tuple(int(x) for x in key)
+
+
+
+
     encrypted_data = ''
     for x in range(height):
         for y in code:
