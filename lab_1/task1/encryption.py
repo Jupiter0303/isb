@@ -2,6 +2,8 @@ from math import ceil
 
 
 def path_generation(columns: int, key: str) -> tuple:
+    if not key.isdigit():
+        raise ValueError("Ключ должен содержать только цифры")
     code = []
     start = 0
     n = len(key)
@@ -23,9 +25,16 @@ def encryption(original_data:str, key:str)->str:
     data = original_data.replace(" ","")
     data = data.replace("!","")
     data = data.replace("?","")
-    data = data.replace("-","")
+    data = data.replace("—","")
     data = data.replace(".","")
+    data = data.replace(",","")
+    data = data.replace(";","")
+    data = data.replace(":","")
+    data = data.replace("\n","")
+    data = data.replace("(","")
+    data = data.replace(")","")
 
+    data = data.lower()
     height = round(len(data)**0.5)
     width = ceil(len(data)/height)
     data_in_matrix = []
