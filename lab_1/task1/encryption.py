@@ -38,9 +38,7 @@ def encryption(original_data:str, key:str)->str:
 
             else:
                 data_in_matrix[x].append('_')
-
-
-
+    code = path_generation(width,key)
 
     encrypted_data = ''
     for x in range(height):
