@@ -24,17 +24,22 @@ def swap(symbol1:str,symbol2:str,key:dict)->dict:
 def decoding(encrypted_data: str, key: dict)->str:
     decrypted_data = list()
     for char in encrypted_data:
-        decrypted_data.append(key[char])
+        if char in key:
+            decrypted_data.append(key[char])
+        else:
+            raise KeyError(f"Символ {char} отсутствует в словаре key в функции decoding")
     return ''.join(decrypted_data)
 
 
-def decryption(encrypted_text:str)->str:
+def create_key(encrypted_text:str)->dict:
     encrypted_alphabet = create_encrypted_alphabet(encrypted_text)
     original_alphabet = list(stats.keys())
     print("Формирование ключа:")
     key = dict(zip(encrypted_alphabet,original_alphabet))
     while True:
         print(f"Текущий текст:\n {decoding(encrypted_text,key)}")
+        print(f"Текущий ключ:\n {key}")
+
         print(" Поменять символы - 1 \n Завершить - любой другой символ" )
         choice = input().strip()
         if choice == '1':
@@ -47,5 +52,5 @@ def decryption(encrypted_text:str)->str:
             key = swap(symbol1,symbol2,key)
         else:
             break
-    return decoding(encrypted_text,key)
+    return key
 
