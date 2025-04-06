@@ -10,48 +10,22 @@ def create_encrypted_alphabet(data:str)->list:
     sorted_dict = dict(sorted(sorted_dict.items(), key=lambda item: item[1], reverse=True))
     return list(sorted_dict.keys())
 
-
-def decoding(data: str, key: dict)->str:
-    size = len(key)
-    keys = list(key.keys())
-    passed_chars = set()
-    for index in range(size):
-        cur_encrypted_char = keys[index]
-        if cur_encrypted_char in passed_chars:
-            continue
-        if key[cur_encrypted_char] in keys:
-            stack = list()
-            stack.append(cur_encrypted_char)
-            cur_encrypted_char = key[cur_encrypted_char]
-            repeat_char = ''
-            while key[cur_encrypted_char] in keys:
-                stack.append(cur_encrypted_char)
-                cur_encrypted_char = key[cur_encrypted_char]
-                if key[cur_encrypted_char] in stack:
-                    repeat_char = key[cur_encrypted_char]
-                    data = data.replace(repeat_char,
-                                        '##&' )
-                    data = data.replace(cur_encrypted_char,
-                                        repeat_char )
-                    break
-
-            while len(stack):
-                cur_encrypted_char = stack.pop()
-                passed_chars.add(cur_encrypted_char)
-                if cur_encrypted_char == repeat_char:
-                    cur_encrypted_char = '##&'
-                data = data.replace(cur_encrypted_char,key[cur_encrypted_char])
+def swap(symbol1:str,symbol2:str,key:dict)->dict:
+    swap_keys = list()
+    for k in key:
+        if key[k] == symbol1 or key[k] == symbol2:
+            swap_keys.append(k)
+        if len(swap_keys) == 2:
+            break
+    key[swap_keys[0]],key[swap_keys[1]] = key[swap_keys[1]],key[swap_keys[0]]
+    return key
 
 
-
-        else:
-            data = data.replace(cur_encrypted_char,key[cur_encrypted_char])
-            passed_chars.add(cur_encrypted_char)
-def swap(data: str, symbol1: str, symbol2: str) -> str:
-    data.replace(symbol1,'##&')
-    data.replace(symbol2, symbol1)
-    data.replace(symbol1, symbol2)
-    return data
+def decoding(encrypted_data: str, key: dict)->str:
+    decrypted_data = list()
+    for char in encrypted_data:
+        decrypted_data.append(key[char])
+    return ''.join(decrypted_data)
 
 
 def decryption(encrypted_text:str)->str:
@@ -60,21 +34,18 @@ def decryption(encrypted_text:str)->str:
     print("Формирование ключа:")
     key = dict(zip(encrypted_alphabet,original_alphabet))
     while True:
-        print(f"Текущий текст:\n {encrypted_text}")
-        print(" Поменять символы - 1 \n Завершить - 2" )
+        print(f"Текущий текст:\n {decoding(encrypted_text,key)}")
+        print(" Поменять символы - 1 \n Завершить - любой другой символ" )
         choice = input().strip()
         if choice == '1':
-            while True:
+            symbol1 = input("1-ый символ: ").strip()
+            symbol2 = input("2-ой символ: ").strip()
+            while not (symbol1 in original_alphabet and symbol2 in original_alphabet):
+                print("Некорректно введенный символ, повторите снова.")
                 symbol1 = input("1-ый символ: ").strip()
                 symbol2 = input("2-ой символ: ").strip()
-                if not (symbol1 in original_alphabet and symbol2 in original_alphabet):
-                    print("Некорректно введенный символ, повторите снова.")
-                else:
-                    encrypted_text = swap(encrypted_text,symbol1,symbol2)
+            key = swap(symbol1,symbol2,key)
+        else:
+            break
+    return decoding(encrypted_text,key)
 
-                    break
-
-
-
-print(encrypted_text)
-    return encrypted_text
