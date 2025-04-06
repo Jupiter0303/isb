@@ -20,19 +20,29 @@ def decoding(data: str, key: dict)->str:
         if cur_encrypted_char in passed_chars:
             continue
         if key[cur_encrypted_char] in keys:
-            replacement_char = cur_encrypted_char
-            while True:
-                data = data.replace(key[cur_encrypted_char], '&')
-                data = data.replace(replacement_char, key[cur_encrypted_char])
-                passed_chars.add(cur_encrypted_char)
+            stack = list()
+            stack.append(cur_encrypted_char)
+            cur_encrypted_char = key[cur_encrypted_char]
+            repeat_char = ''
+            while key[cur_encrypted_char] in keys:
+                stack.append(cur_encrypted_char)
                 cur_encrypted_char = key[cur_encrypted_char]
-
-                if key[cur_encrypted_char] in keys and not cur_encrypted_char in passed_chars:
-                    data = data.replace(key[cur_encrypted_char], '#')
-                    data = data.replace('&', key[cur_encrypted_char])
-                    cur_encrypted_char = key[cur_encrypted_char]
-                else:
+                if key[cur_encrypted_char] in stack:
+                    repeat_char = key[cur_encrypted_char]
+                    data = data.replace(repeat_char,
+                                        '##&' )
+                    data = data.replace(cur_encrypted_char,
+                                        repeat_char )
                     break
+
+            while len(stack):
+                cur_encrypted_char = stack.pop()
+                passed_chars.add(cur_encrypted_char)
+                if cur_encrypted_char == repeat_char:
+                    cur_encrypted_char = '##&'
+                data = data.replace(cur_encrypted_char,key[cur_encrypted_char])
+
+
 
         else:
             data = data.replace(cur_encrypted_char,key[cur_encrypted_char])
