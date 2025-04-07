@@ -33,3 +33,8 @@ stats = {
     'Э': 0.002416,
     'Ъ': 0.000000
 }
+IGNORE_CHAR = '\n'
+EXIT_COMMAND  = 'exit'
+KEY_PATH = 'key.txt'
+ENCRYPTED_DATA_PATH = 'cod9.txt'
+DECRYPTED_DATA_PATH = 'decrypted_data.txt'

@@ -1,12 +1,14 @@
-from constants import stats,IGNORE_CHAR,EXIT_COMMAND
+from constants import stats, IGNORE_CHAR, EXIT_COMMAND
 
 
 def create_encrypted_alphabet(data: str) -> list:
-    '''
+    """
     создание алфавита из символов шифротекста
     :param data: исходные зашифрованные данные в виде строки
     :return: список отсортированный по убывающей частоте символа алфавита шифротекста
-    '''
+    """
+
+
     sorted_dict = dict()
     encrypted_alphabet = set(data)
     encrypted_alphabet.discard(IGNORE_CHAR)
@@ -79,7 +81,7 @@ def create_key(encrypted_text: str) -> dict:
         print(f"Текущий текст:\n {decoding(encrypted_text,key)}")
         print(f"Текущий ключ:\n {key}")
 
-        choice = input(f"Завершить - {EXIT_COMMAND}, поменять символы по ключам - иначе").strip()
+        choice = input(f"Завершить - {EXIT_COMMAND}, поменять символы по ключам - иначе: ").strip()
 
         if choice.lower() != 'exit':
             symbol1 = input("1-ый символ: ").strip()
