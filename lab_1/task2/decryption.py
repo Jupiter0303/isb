@@ -7,8 +7,6 @@ def create_encrypted_alphabet(data: str) -> list:
     :param data: исходные зашифрованные данные в виде строки
     :return: список отсортированный по убывающей частоте символа алфавита шифротекста
     """
-
-
     sorted_dict = dict()
     encrypted_alphabet = set(data)
     encrypted_alphabet.discard(IGNORE_CHAR)
