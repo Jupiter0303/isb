@@ -27,9 +27,7 @@ def path_generation(key: str) -> tuple:
                 code.append(num)
                 used_positions.update(range(start, end))
                 break
-    print(code)
     non_key_columns = set(range(0,COLUMNS)) - (set(code))
-    print(non_key_columns)
     non_key_columns = sorted(list(non_key_columns))
     code += non_key_columns
     return tuple(code)
@@ -69,11 +67,9 @@ def encryption(original_data: str, key: str) -> str:
 
     code = path_generation(key)
     encrypted_data = list()
-    print(code)
     for x in range(height):
         for y in code:
             if not data_in_matrix[x][y] == EMPTY_CHAR:
                 encrypted_data.append(data_in_matrix[x][y])
-    print(len(''.join(encrypted_data)))
 
     return ''.join(encrypted_data)
