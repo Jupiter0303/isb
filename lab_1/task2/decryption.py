@@ -1,4 +1,4 @@
-from constants import stats, IGNORE_CHAR, EXIT_COMMAND
+from constants import STATS, IGNORE_CHAR, EXIT_COMMAND
 
 
 def create_encrypted_alphabet(data: str) -> list:
@@ -71,7 +71,7 @@ def create_key(encrypted_text: str) -> dict:
     :return: ключ-словарь, который сформировали
     """
     encrypted_alphabet = create_encrypted_alphabet(encrypted_text)
-    original_alphabet = list(stats.keys())
+    original_alphabet = list(STATS.keys())
     print("Формирование ключа:")
     key = dict(zip(encrypted_alphabet,original_alphabet))
 
