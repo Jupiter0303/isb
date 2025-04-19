@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8f8dc3d5-296d-4aef-bb27-b6f566a18ea1" name="Changes" comment="gitignore">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lab_1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/task2/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/task2/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/task2/decryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/task2/decryption.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="origin/lab1-var9" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="lab1-var9" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Jupiter0303&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Jupiter0303/isb.git&quot;,
+    &quot;accountId&quot;: &quot;8d118794-b58e-4ab9-83b3-3c7201dcd4de&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2uq3Ku5EsPPGGVGWW0wQ3YOneOV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.decryption.executor&quot;: &quot;Run&quot;,
+    &quot;Python.encryption.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.puk.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;lab1-var9&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/qwert/PycharmProjects/FIS_lab/isb/lab_1&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\qwert\PycharmProjects\FIS_lab\isb\lab_1" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-fb887030ada0-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.21565.199" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8f8dc3d5-296d-4aef-bb27-b6f566a18ea1" name="Changes" comment="" />
+      <created>1742962216919</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742962216919</updated>
+    </task>
+    <task id="LOCAL-00001" summary="неудачная попытка написать функцию декондинга - проблема при зацикливании исходного и ключевого алфавитов">
+      <option name="closed" value="true" />
+      <created>1743948869084</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743948869084</updated>
+    </task>
+    <task id="LOCAL-00002" summary="вторая попытка создать функцию декодинга и в силу сложности нечитабельности напишу сейчас простую реализацию">
+      <option name="closed" value="true" />
+      <created>1743973336085</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743973336085</updated>
+    </task>
+    <task id="LOCAL-00003" summary="простая реализация декодинга по ключу + swap просто меняет значения по ключам в словаре и доделан decryption">
+      <option name="closed" value="true" />
+      <created>1743977311483</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743977311483</updated>
+    </task>
+    <task id="LOCAL-00004" summary="main">
+      <option name="closed" value="true" />
+      <created>1743978628930</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743978628930</updated>
+    </task>
+    <task id="LOCAL-00005" summary="форматирование кода по pep 8">
+      <option name="closed" value="true" />
+      <created>1743990025794</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1743990025794</updated>
+    </task>
+    <task id="LOCAL-00006" summary="подстановка ключа и записи в файлы результатов">
+      <option name="closed" value="true" />
+      <created>1744060709213</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1744060709214</updated>
+    </task>
+    <task id="LOCAL-00007" summary="изменена логика составления путь по которому будем смотреть столбцы матрицы в path_generation + pep8">
+      <option name="closed" value="true" />
+      <created>1744114463348</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1744114463348</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Появилась проблема потери столбцов матрицы в encryption,так как путь по столбцам сформировал только из ключа. Не вошедшие в ключ индексы столбцов просто добавил справа в code">
+      <option name="closed" value="true" />
+      <created>1744116980819</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1744116980819</updated>
+    </task>
+    <task id="LOCAL-00009" summary="task1">
+      <option name="closed" value="true" />
+      <created>1744118602348</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1744118602348</updated>
+    </task>
+    <task id="LOCAL-00010" summary="task1">
+      <option name="closed" value="true" />
+      <created>1744118614939</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1744118614939</updated>
+    </task>
+    <task id="LOCAL-00011" summary="task1">
+      <option name="closed" value="true" />
+      <created>1744122008276</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1744122008280</updated>
+    </task>
+    <task id="LOCAL-00012" summary="удалил лишние файлы">
+      <option name="closed" value="true" />
+      <created>1744176872451</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1744176872451</updated>
+    </task>
+    <task id="LOCAL-00013" summary="удалил лишние файлы">
+      <option name="closed" value="true" />
+      <created>1744179204655</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1744179204655</updated>
+    </task>
+    <task id="LOCAL-00014" summary="gitignore">
+      <option name="closed" value="true" />
+      <created>1744180007530</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1744180007530</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/lab1-var9" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="неудачная попытка написать функцию декондинга - проблема при зацикливании исходного и ключевого алфавитов" />
+    <MESSAGE value="вторая попытка создать функцию декодинга и в силу сложности нечитабельности напишу сейчас простую реализацию" />
+    <MESSAGE value="простая реализация декодинга по ключу + swap просто меняет значения по ключам в словаре и доделан decryption" />
+    <MESSAGE value="main" />
+    <MESSAGE value="форматирование кода по pep 8" />
+    <MESSAGE value="подстановка ключа и записи в файлы результатов" />
+    <MESSAGE value="изменена логика составления путь по которому будем смотреть столбцы матрицы в path_generation + pep8" />
+    <MESSAGE value="Появилась проблема потери столбцов матрицы в encryption,так как путь по столбцам сформировал только из ключа. Не вошедшие в ключ индексы столбцов просто добавил справа в code" />
+    <MESSAGE value="task1" />
+    <MESSAGE value="удалил лишние файлы" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
+  </component>
+</project>
