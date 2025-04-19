@@ -1,5 +1,5 @@
 from math import ceil
-from constants import COLUMNS, UNNECESSARY_CHARACTERS, EMPTY_CHAR
+from constants import COLUMNS, UNNECESSARY_CHARACTERS, EMPTY_CHAR, LINE_END
 
 
 def path_generation(key: str) -> tuple:
@@ -71,5 +71,6 @@ def encryption(original_data: str, key: str) -> str:
         for y in code:
             if not data_in_matrix[x][y] == EMPTY_CHAR:
                 encrypted_data.append(data_in_matrix[x][y])
+        encrypted_data.append(LINE_END)
 
     return ''.join(encrypted_data)
