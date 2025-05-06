@@ -38,7 +38,7 @@ def IdenticalConsecutiveBitsTest(data: list) -> float:
 
     numerator = abs(alternating_chars_number -
                     2 * len(data) * ones_ratio * (1 - ones_ratio))
-    denominator = 2 * (2 * len(data) ** 0.5) * ones_ratio * (1 - ones_ratio)
+    denominator = 2 * ((2 * len(data)) ** 0.5) * ones_ratio * (1 - ones_ratio)
     p_value = math.erfc(numerator / denominator)
     return p_value
 

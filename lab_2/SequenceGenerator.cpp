@@ -19,7 +19,7 @@ int main()
 {
 	std::vector<bool> binary_sequence;
 	binary_sequence = SequenceGenerate(128);
-	std::cout<< "A sequence of random 128 bits: "
+	std::cout<< "A sequence of random 128 bits: ";
 	for (auto bit : binary_sequence)
 		std::cout << bit;
 }

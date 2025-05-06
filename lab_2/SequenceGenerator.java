@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
     public static void main(String[] args) {
         ArrayList<Boolean> binary_sequence = GenerateSequence(128);
-        System.out.print("A sequence of random 128 bits: ")
+        System.out.print("A sequence of random 128 bits: ");
         for (boolean bit : binary_sequence) {
             System.out.print(bit ? '1' : '0');
         }
