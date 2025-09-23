@@ -1,20 +1,32 @@
 import argparse
 
-from config import INITIAL_FILE, ENCRYPTED_FILE, DECRYPTED_FILE, SYMMETRIC_KEY, PUBLIC_PEM, PRIVATE_PEM
-import os
-from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives import hashes
-from symmetric import Symmetric
 from asymmetric import Asymmetric
+from config import (
+    DECRYPTED_FILE,
+    ENCRYPTED_FILE,
+    INITIAL_FILE,
+    PRIVATE_PEM,
+    SYMMETRIC_KEY
+)
 from fileOrganization import (
-    serialization_public_key, serialization_private_key,
-    deserialization_private_key, save_bytes_to_file,
-    load_bytes_from_file, check_file_not_empty,
+    check_file_not_empty,
+    deserialization_private_key,
+    load_bytes_from_file,
     read_txt_file,
+    save_bytes_to_file,
+    serialization_private_key,
+    serialization_public_key,
     write_file_txt
 )
+from symmetric import Symmetric
 
-def GenerateKeys() -> bool:
+
+def generate_keys() -> bool:
+    """
+        Сюжет генерации ключей гибридной системы и шифрования симметричного ключа
+        :arg: None
+        :return: bool - корректность выполнения
+        """
     print("Запуск генерации ключей")
     try:
         sym_key = Symmetric.generate_key()
@@ -39,19 +51,25 @@ def GenerateKeys() -> bool:
     return True
 
 
-def EncryptData() -> bool:
+def encrypt_data() -> bool:
+    """
+    Сюжет шифрования данных симметричным шифрованием
+    :return: bool - корректность выполнения
+    """
     print("Запуск шифрования данных")
     try:
-        if (not (check_file_not_empty(SYMMETRIC_KEY)
-                 and check_file_not_empty(PRIVATE_PEM))):
-                        print("При шифровании были найдены пустые файлы ключей")
-                        return False
+        if not (check_file_not_empty(SYMMETRIC_KEY)
+                and check_file_not_empty(PRIVATE_PEM)):
+            print("При шифровании были найдены пустые файлы ключей")
+            return False
 
         private_key = deserialization_private_key()
         print("Приватный ключ был десериализован")
 
-        original_sym_key = Asymmetric.decrypt(load_bytes_from_file(SYMMETRIC_KEY),
-                                              private_key)
+        original_sym_key = Asymmetric.decrypt(
+            load_bytes_from_file(SYMMETRIC_KEY),
+            private_key
+        )
         print("Симметричный ключ был извлечен и дешифрован")
 
         original_data = read_txt_file(INITIAL_FILE)
@@ -72,7 +90,11 @@ def EncryptData() -> bool:
     return True
 
 
-def DecryptData():
+def decrypt_data():
+    """
+        Сюжет дешифрования шифротекста
+        :return: bool - корректность выполнения
+        """
     print("Запуск дешифрования данных")
     try:
         if not check_file_not_empty(ENCRYPTED_FILE):
@@ -82,11 +104,13 @@ def DecryptData():
         private_key = deserialization_private_key()
         print("Приватный ключ был десериализован")
 
-        original_sym_key = Asymmetric.decrypt(load_bytes_from_file(SYMMETRIC_KEY),
-                                              private_key)
+        original_sym_key = Asymmetric.decrypt(
+            load_bytes_from_file(SYMMETRIC_KEY),
+            private_key
+        )
         print("Симметричный ключ был извлечен и дешифрован")
 
-        c_data_bytes =  load_bytes_from_file(ENCRYPTED_FILE)
+        c_data_bytes = load_bytes_from_file(ENCRYPTED_FILE)
         original_data_bytes = Symmetric.decrypt(c_data_bytes, original_sym_key)
         original_data = original_data_bytes.decode('utf-8')
         print("Зашифрованный байты были извлечены и конвертированы в текст")
@@ -102,7 +126,13 @@ def DecryptData():
 
     return True
 
+
 def main():
+    """
+        Главная функция программы. Реализует парсинг аргументов командной строки,
+         на основе которых запускает тот или иной сюжет гибридного шифрования
+        :return:
+        """
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-gen', '--generation', help='Запуск режима генерации ключей', action='store_true')
@@ -112,11 +142,11 @@ def main():
     args = parser.parse_args()
     status = False
     if args.generation:
-        status = GenerateKeys()
-    elif args.encryption :
-        status = EncryptData()
-    elif args.decryption :
-        status = DecryptData()
+        status = generate_keys()
+    elif args.encryption:
+        status = encrypt_data()
+    elif args.decryption:
+        status = decrypt_data()
     else:
         print("Была выбрана неизвестная операция")
 
