@@ -8,16 +8,7 @@ from config import (
     PRIVATE_PEM,
     SYMMETRIC_KEY
 )
-from fileOrganization import (
-    check_file_not_empty,
-    deserialization_private_key,
-    load_bytes_from_file,
-    read_txt_file,
-    save_bytes_to_file,
-    serialization_private_key,
-    serialization_public_key,
-    write_file_txt
-)
+from fileOrganization import FileOrganizer
 from symmetric import Symmetric
 
 
@@ -35,12 +26,12 @@ def generate_keys() -> bool:
         private_key, public_ley = Asymmetric.generate_keys()
         print("Сгенерированы асимметричные ключи")
 
-        serialization_public_key(public_ley)
-        serialization_private_key(private_key)
+        FileOrganizer.serialization_public_key(public_ley)
+        FileOrganizer.serialization_private_key(private_key)
         print("Сериализованы публичный и приватный ключи")
 
         cipher_sym_key = Asymmetric.encrypt_bytes(sym_key, public_ley)
-        save_bytes_to_file(cipher_sym_key, SYMMETRIC_KEY)
+        FileOrganizer.save_bytes_to_file(cipher_sym_key, SYMMETRIC_KEY)
         print("Зашифрован и сохранен симметричный ключ")
 
         print("Конец генерации ключей")
@@ -58,27 +49,27 @@ def encrypt_data() -> bool:
     """
     print("Запуск шифрования данных")
     try:
-        if not (check_file_not_empty(SYMMETRIC_KEY)
-                and check_file_not_empty(PRIVATE_PEM)):
+        if not (FileOrganizer.check_file_not_empty(SYMMETRIC_KEY)
+                and FileOrganizer.check_file_not_empty(PRIVATE_PEM)):
             print("При шифровании были найдены пустые файлы ключей")
             return False
 
-        private_key = deserialization_private_key()
+        private_key = FileOrganizer.deserialization_private_key()
         print("Приватный ключ был десериализован")
 
         original_sym_key = Asymmetric.decrypt(
-            load_bytes_from_file(SYMMETRIC_KEY),
+            FileOrganizer.load_bytes_from_file(SYMMETRIC_KEY),
             private_key
         )
         print("Симметричный ключ был извлечен и дешифрован")
 
-        original_data = read_txt_file(INITIAL_FILE)
+        original_data = FileOrganizer.read_txt_file(INITIAL_FILE)
         print("Исходный текст считан")
 
         c_data_bytes = Symmetric.encrypt(original_data, original_sym_key)
         print("Исходный текст зашифрован симметричным алгоритмом ")
 
-        save_bytes_to_file(c_data_bytes, ENCRYPTED_FILE)
+        FileOrganizer.save_bytes_to_file(c_data_bytes, ENCRYPTED_FILE)
         print("Исходный текст зашифрован симметричным алгоритмом ")
 
         print("Конец шифрования данных")
@@ -97,25 +88,25 @@ def decrypt_data():
         """
     print("Запуск дешифрования данных")
     try:
-        if not check_file_not_empty(ENCRYPTED_FILE):
+        if not FileOrganizer.check_file_not_empty(ENCRYPTED_FILE):
             print("Файл с зашифрованными данными пустой")
             return False
 
-        private_key = deserialization_private_key()
+        private_key = FileOrganizer.deserialization_private_key()
         print("Приватный ключ был десериализован")
 
         original_sym_key = Asymmetric.decrypt(
-            load_bytes_from_file(SYMMETRIC_KEY),
+            FileOrganizer.load_bytes_from_file(SYMMETRIC_KEY),
             private_key
         )
         print("Симметричный ключ был извлечен и дешифрован")
 
-        c_data_bytes = load_bytes_from_file(ENCRYPTED_FILE)
+        c_data_bytes = FileOrganizer.load_bytes_from_file(ENCRYPTED_FILE)
         original_data_bytes = Symmetric.decrypt(c_data_bytes, original_sym_key)
         original_data = original_data_bytes.decode('utf-8')
         print("Зашифрованный байты были извлечены и конвертированы в текст")
 
-        write_file_txt(original_data, DECRYPTED_FILE)
+        FileOrganizer.write_file_txt(original_data, DECRYPTED_FILE)
         print("Данные были записаны в файл с дешифрованным текстом")
 
         print("Конец дешифрования данных")
